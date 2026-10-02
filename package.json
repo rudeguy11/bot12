@@ -1,0 +1,19 @@
+{
+  "name": "rudefabricbot-railway",
+  "version": "3.0.0",
+  "description": "Railway-ready Mineflayer Minecraft 26.1 bot",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "test": "node --check index.js"
+  },
+  "engines": {
+    "node": ">=24"
+  },
+  "dependencies": {
+    "express": "^4.21.2",
+    "minecraft-data": "^3.103.0",
+    "mineflayer": "^4.39.0",
+    "mineflayer-pathfinder": "^2.4.5"
+  }
+}
