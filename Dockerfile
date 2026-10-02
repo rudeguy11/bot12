@@ -15,9 +15,9 @@ RUN chmod +x /app/entrypoint.sh
 RUN mkdir -p /app/minecraft/mods /app/minecraft/natives
 
 # Build the client-side bot mod. Fabric 26.1 uses unobfuscated Loom 1.15 and Java 25.
-RUN curl -fsSL https://services.gradle.org/distributions/gradle-9.4-bin.zip -o /tmp/gradle.zip \
+RUN curl -fsSL https://services.gradle.org/distributions/gradle-9.4.0-bin.zip -o /tmp/gradle.zip \
  && unzip -q /tmp/gradle.zip -d /opt \
- && ln -s /opt/gradle-9.4/bin/gradle /usr/local/bin/gradle \
+ && ln -s /opt/gradle-9.4.0/bin/gradle /usr/local/bin/gradle \
  && cd /app \
  && gradle :fabric-bot:build --no-daemon \
  && cp /app/fabric-bot/build/libs/rudeguy-fabric-bot-1.0.0.jar /app/minecraft/mods/
