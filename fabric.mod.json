@@ -1,0 +1,17 @@
+{
+  "schemaVersion": 1,
+  "id": "rudeguy-fabric-bot",
+  "version": "1.0.0",
+  "name": "RudeGuy Fabric Bot",
+  "description": "Small client-side automation mod for a headless Fabric client.",
+  "environment": "client",
+  "entrypoints": {
+    "client": ["com.rudeguy.bot.RudeGuyFabricBot"]
+  },
+  "depends": {
+    "fabricloader": ">=0.19.0",
+    "minecraft": "26.1.x",
+    "java": ">=25",
+    "fabric-api": ">=0.155.0"
+  }
+}
