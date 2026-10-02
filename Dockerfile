@@ -1,13 +1,21 @@
-FROM node:24-bookworm-slim
+FROM eclipse-temurin:25-jre-jammy
 
-WORKDIR /app
+ENV DEBIAN_FRONTEND=noninteractive \
+    FABRIC_MC_VERSION=26.1.2 \
+    FABRIC_LOADER_VERSION=0.19.2 \
+    FABRIC_API_VERSION=0.154.0+26.1.2 \
+    MC_DIR=/opt/minecraft
 
-ENV NODE_ENV=production
-ENV MC_VERSION=26.1
+RUN apt-get update \
+ && apt-get install -y --no-install-recommends curl ca-certificates xvfb libxi6 libxrender1 libxtst6 libxext6 libgl1 libglx0 \
+ && rm -rf /var/lib/apt/lists/*
 
-COPY package.json ./
-RUN npm install --omit=dev
+WORKDIR /opt/app
+COPY . /opt/app/
 
-COPY . .
+RUN chmod +x /opt/app/entrypoint.sh \
+ && mkdir -p "${MC_DIR}/mods"
 
-CMD ["npm", "start"]
+EXPOSE 8080
+
+ENTRYPOINT ["/opt/app/entrypoint.sh"]
